@@ -1,0 +1,15 @@
+name = "cfworkers-discordbot"
+main = "dist/server.mjs"
+compatibility_date = "2022-12-14"
+
+no_bundle = true
+minify = false
+
+
+
+[build]
+command = "node --no-warnings ./scripts/build.js publish"
+
+
+[miniflare]
+global_async_io = true # Slshx 모듈을 사용하려면 필수로 활성화해야 합니다.
