@@ -9,11 +9,11 @@ let result = {
 };
 
 
-const pushCommands = (propName, callback, index) => {
+const pushCommands = (propName, callback, index, _slashCMD) => {
 	let key, value;
 	if(propName === 'commands') {
 		[key, value] = [
-			slashCMD.filenames[index].replace(/.*\/(.*)\.jsx$/gi, '$1'),
+			_slashCMD.filenames[index].replace(/.*\/(.*)\.jsx$/gi, '$1'),
 			callback.default
 		];
 	} else {
@@ -25,8 +25,8 @@ const pushCommands = (propName, callback, index) => {
 	
 	result[propName][key] = value;
 };
-userCTXM.forEach(c=> pushCommands(c, 'userCommands'));
-messageCTXM.forEach(c=> pushCommands(c, 'messageCommands'));
-slashCMD.default.forEach((c, i)=> pushCommands('commands', c, i));
+userCTXM.forEach(c=> pushCommands('userCommands', c));
+messageCTXM.forEach(c=> pushCommands('messageCommands', c));
+slashCMD.default.forEach((c, i)=> pushCommands('commands', c, i, slashCMD));
 
 export default result;
