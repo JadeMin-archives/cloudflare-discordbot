@@ -1,7 +1,8 @@
 import { build } from 'esbuild';
+import PLUGIN_GlobImport from 'esbuild-plugin-import-glob';
 import env from "../secrets.json" assert {type: 'json'};
 const argv = process.argv.slice(2)[0]; // node build.js 할 때 빌드 옵션을 인자로 지정함
-const isDeployMode = argv === 'deploy'; // 만약 빌드 옵션이 deploy (명령어 배포)일 경우
+const isDeployMode = argv === 'deploy'; // 빌드 옵션이 deploy (명령어 배포)인지 여부
 
 
 const define = {
@@ -22,7 +23,7 @@ const define = {
 	"env.SECRET_KEY": JSON.stringify(env["SECRET_KEY"])
 };
 await build({
-	entryPoints: [`src/${argv}.js`],
+	entryPoints: [`src/${isDeployMode? 'deploy':'server'}.js`],
 	outfile: "dist/server.mjs",
 	//outExtension: {".js": ".mjs"},
 
@@ -33,10 +34,14 @@ await build({
 	bundle: true,
 	treeShaking: true,
 	minify: true,
-	sourcemap: 'inline',
+	sourcemap: true,
 
 	jsxFactory: "createElement",
 	jsxFragment: "Fragment",
+
+	plugins: [
+		PLUGIN_GlobImport()
+	],
 
 	define
 });
