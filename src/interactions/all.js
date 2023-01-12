@@ -27,6 +27,6 @@ const pushCommands = (propName, callback, index) => {
 };
 userCTXM.forEach(c=> pushCommands(c, 'userCommands'));
 messageCTXM.forEach(c=> pushCommands(c, 'messageCommands'));
-slash_commands.default.forEach((c, i)=> pushCommands('commands', c, i));
+slashCMD.default.forEach((c, i)=> pushCommands('commands', c, i));
 
 export default result;
