@@ -1,6 +1,6 @@
-import ctxmUser from "./context_menu/user/*.jsx";
-import ctxmMessage from "./context_menu/message/*.jsx";
-const slash_commands = require(`./slash/*.jsx`);
+import userCTXM from "./context_menu/user/*.jsx";
+import messageCTXM from "./context_menu/message/*.jsx";
+const slashCMD = require(`./slash/*.jsx`);
 
 let result = {
 	commands: {},
@@ -10,19 +10,23 @@ let result = {
 
 
 const pushCommands = (propName, callback, index) => {
+	let key, value;
 	if(propName === 'commands') {
-		const commandName = slash_commands.filenames[index].replace(/.*\/(.*)\.jsx$/gi, '$1');
-		result[propName][commandName] = callback.default;
+		[key, value] = [
+			slashCMD.filenames[index].replace(/.*\/(.*)\.jsx$/gi, '$1'),
+			callback.default
+		];
 	} else {
-		const [key, value] = [
+		[key, value] = [
 			Object.keys(callback.default)[0],
 			Object.values(callback.default)[0]
 		];
-		result[propName][key] = value;
 	}
+	
+	result[propName][key] = value;
 };
-ctxmUser.forEach(c=> pushCommands(c, 'userCommands'));
-ctxmMessage.forEach(c=> pushCommands(c, 'messageCommands'));
+userCTXM.forEach(c=> pushCommands(c, 'userCommands'));
+messageCTXM.forEach(c=> pushCommands(c, 'messageCommands'));
 slash_commands.default.forEach((c, i)=> pushCommands('commands', c, i));
 
 export default result;
