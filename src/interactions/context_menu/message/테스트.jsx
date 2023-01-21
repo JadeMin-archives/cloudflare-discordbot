@@ -7,7 +7,7 @@ import {
 
 export default {
 	"테스트 메시지메뉴": () => {
-		return (interaction, secret, ctx, targetMessage) => {
+		return (interaction, workerConfig, workerContext, targetMessage) => {
 			const messageUrl = `https://discord.com/channels/${interaction.guild_id ?? "@me"}/${targetMessage.channel_id}/${targetMessage.id}`;
 			
 			return (
