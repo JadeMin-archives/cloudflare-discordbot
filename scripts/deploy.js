@@ -9,9 +9,6 @@ import {
 	Miniflare,
 	Log, LogLevel
 } from 'miniflare';
-import {
-	SECRET_KEY
-} from "../secrets.json" assert {type: 'json'};
 
 
 const localWorker = new Miniflare({
