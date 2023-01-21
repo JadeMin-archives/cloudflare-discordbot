@@ -31,11 +31,6 @@ const options = {
 
 // 명령어 배포에 사용될 주소
 Router.post('/deploy', async (request) => {
-	// Authorization 헤더값과 애플리케이션 시크릿 키값을 비교한다 (인증용)
-	if(request.headers.get('Authorization') !== options.applicationSecret) {
-		return new Response("Unauthorized", {status: 401});
-	}
-
 	// slshx 모듈의 명령어 배포
 	await deployCommands(options);
 	return new Response("Successfully Deployed", {status: 200}); //배포 완료

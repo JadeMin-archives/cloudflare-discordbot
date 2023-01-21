@@ -27,12 +27,7 @@ const localWorker = new Miniflare({
 	buildCommand: "npm run build:deploy",
 	scriptPath: "dist/server.mjs",
 });
-const response = await localWorker.dispatchFetch(`http://localhost:8787/deploy`, {
-	method: 'POST',
-	headers: {
-		"Authorization": `${SECRET_KEY}`
-	}
-});
+const response = await localWorker.dispatchFetch(`http://localhost:8787/deploy`, {method: 'POST'});
 
 if(response.status === 200) console.log("✅ - 명령어 배포용 로컬서버가 모든 명령어를 배포했습니다!");
 else {
