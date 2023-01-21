@@ -15,7 +15,7 @@ export default () => {
 	const [replacerInput_id, replacerInput_value] = useInput();
 	const modal_id = useModal(() => { //모달 전송 시 반환할 컴포넌트
 		const replacer = replacerInput_value || " "; //replacer를 지정하지 않았을 경우 기본값인 공백으로 설정합니다.
-		
+
 		return (
 			<Message>
 				{
@@ -28,7 +28,7 @@ export default () => {
 	
 
 	// 슬래시 명령어 사용 시 반환할 컴포넌트
-	return () => (
+	return (interaction, workerConfig, workerContext) => (
 		<Modal
 			id={modal_id}
 			title="미니파이"
