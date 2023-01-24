@@ -27,7 +27,6 @@ await build({
 	outfile: "dist/server.mjs",
 	//outExtension: {".js": ".mjs"},
 
-	platform: 'neutral',
 	format: 'esm',
 	target: 'esnext',
 	
