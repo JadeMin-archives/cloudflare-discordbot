@@ -1,3 +1,6 @@
+import type { APIInteraction } from 'discord-api-types/v9';
+import type { CommandHandler, CommandResponse } from 'slshx';
+
 import {
 	createElement,
 	useDescription,
@@ -7,7 +10,7 @@ import {
 } from 'slshx';
 
 export default {
-	"미니파이": () => {
+	"미니파이": (): CommandHandler => {
 		// 명령어 설명
 		useDescription("주어진 글에 있는 모든 엔터를 제거해 한 줄로 합칩니다.");
 
@@ -29,7 +32,11 @@ export default {
 		
 
 		// 슬래시 명령어 사용 시 반환할 컴포넌트
-		return (interaction, workerConfig, workerContext) => (
+		return (
+			interaction: APIInteraction,
+			workerSecret: {},
+			workerContext: ExecutionContext
+		): CommandResponse => (
 			<Modal
 				id={modal_id}
 				title="미니파이"

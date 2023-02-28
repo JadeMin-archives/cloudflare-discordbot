@@ -1,0 +1,12 @@
+{
+	"compilerOptions": {
+		"resolveJsonModule": true,
+
+		"module": "NodeNext",
+		"target": "ESNext",
+
+		"jsx": "react",
+		"jsxFactory": "createElement",
+		"jsxFragmentFactory": "Fragment"
+	}
+}

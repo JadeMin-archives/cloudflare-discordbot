@@ -1,3 +1,7 @@
+import type { ExecutionContext } from '@cloudflare/workers-types';
+import type { APIInteraction, APIMessage } from 'discord-api-types/v9';
+import type { MessageCommandHandler, CommandResponse } from 'slshx';
+
 import {
 	createElement,
 	useDescription,
@@ -6,8 +10,13 @@ import {
 } from 'slshx';
 
 export default {
-	"테스트 메시지메뉴": () => {
-		return (interaction, workerConfig, workerContext, targetMessage) => {
+	"테스트 메시지메뉴": (): MessageCommandHandler => {
+		return (
+			interaction: APIInteraction,
+			workerSecret: {},
+			workerContext: ExecutionContext,
+			targetMessage: APIMessage
+		): CommandResponse => {
 			const messageUrl = `https://discord.com/channels/${interaction.guild_id ?? "@me"}/${targetMessage.channel_id}/${targetMessage.id}`;
 			
 			return (

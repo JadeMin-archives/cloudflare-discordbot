@@ -8,20 +8,23 @@
 		"log": "wrangler tail --format pretty",
 		"log:json": "wrangler tail --format json",
 
-		"test": "wrangler dev -l",
+		"local": "wrangler dev -l",
+
 		"publish": "wrangler publish && echo ✅ - 프로덕션용 서버가 Cloudflare Workers에 업로드되었습니다!\n",
 		"publish:log": "npm run publish && npm run log",
 		"publish:log-json": "npm run publish && npm run log:json",
-
+		
 		"deploy": "node --no-warnings --experimental-vm-modules ./scripts/deploy.js && npm run publish",
 		"deploy:log": "npm run deploy && npm run log",
 		"deploy:log-json": "npm run deploy && npm run log:json"
 	},
 	"dependencies": {
+		"discord-api-types": "^0.37.35",
 		"itty-router": "^3.0.11",
 		"slshx": "^0.3.0"
 	},
 	"devDependencies": {
+		"@cloudflare/workers-types": "^4.20230221.0",
 		"esbuild": "^0.16.17",
 		"esbuild-plugin-import-glob": "^0.1.1",
 		"miniflare": "^2.11.0",

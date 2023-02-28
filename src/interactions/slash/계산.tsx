@@ -1,3 +1,7 @@
+import type { ExecutionContext } from '@cloudflare/workers-types';
+import type { APIInteraction } from 'discord-api-types/v9';
+import type { CommandHandler, CommandResponse } from 'slshx';
+
 import {
 	createElement,
 	useDescription,
@@ -8,7 +12,7 @@ import {
 
 export default {
 	"계산": {
-		"더하기": () => {
+		"더하기": (): CommandHandler => {
 			// 명령어 설명
 			useDescription("두 숫자의 덧셈 결과값을 구합니다.");
 
@@ -24,7 +28,11 @@ export default {
 			
 
 			// 슬래시 명령어 사용 시 반환할 컴포넌트
-			return (interaction, workerConfig, workerContext) => (
+			return (
+				interaction: APIInteraction,
+				workerSecret: {},
+				workerContext: ExecutionContext
+			): CommandResponse => (
 				<Message>
 					{
 						// 숫자 1과 숫자 2를 더합니다.
@@ -49,7 +57,11 @@ export default {
 			
 
 			// 슬래시 명령어 사용 시 반환할 컴포넌트
-			return (interaction, workerConfig, workerContext) => (
+			return (
+				interaction: APIInteraction,
+				workerSecret: {},
+				workerContext: ExecutionContext
+			): CommandResponse => (
 				<Message>
 					{
 						// 숫자 1과 숫자 2를 뺍니다.
@@ -74,7 +86,11 @@ export default {
 			
 
 			// 슬래시 명령어 사용 시 반환할 컴포넌트
-			return (interaction, workerConfig, workerContext) => (
+			return (
+				interaction: APIInteraction,
+				workerSecret: {},
+				workerContext: ExecutionContext
+			): CommandResponse => (
 				<Message>
 					{
 						// 숫자 1과 숫자 2를 곱합니다.
@@ -99,7 +115,11 @@ export default {
 			
 
 			// 슬래시 명령어 사용 시 반환할 컴포넌트
-			return (interaction, workerConfig, workerContext) => (
+			return (
+				interaction: APIInteraction,
+				workerSecret: {},
+				workerContext: ExecutionContext
+			): CommandResponse => (
 				<Message>
 					{
 						// 숫자 1과 숫자 2를 나눕니다.
