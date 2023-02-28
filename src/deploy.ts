@@ -4,7 +4,6 @@
  * slshx 모듈로 명령어 모음을 파싱해서 모든 명령어 배포
  */
 // Cloudflare Workers에서 라우터를 더 편하게 만들기 위한 모듈
-import type { Request, ExecutionContext } from '@cloudflare/workers-types';
 import type { Options } from 'slshx';
 
 import { Router as IttyRouter } from 'itty-router';

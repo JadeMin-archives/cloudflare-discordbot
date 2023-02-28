@@ -1,4 +1,4 @@
-import type { Command } from 'slshx';
+import type { Command, Options } from 'slshx';
 import type { CommandCollection, ExportedCommandModule } from "./all.d.js";
 
 //@ts-expect-error

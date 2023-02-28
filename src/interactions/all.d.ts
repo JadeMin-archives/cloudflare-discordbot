@@ -1,6 +1,7 @@
 import type {
 	UserCommands, MessageCommands, ChatInputCommands,
 	AnyCommandHandler,
+	Options,
 } from 'slshx';
 
 

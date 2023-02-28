@@ -1,4 +1,3 @@
-import type { ExecutionContext } from '@cloudflare/workers-types';
 import type { APIInteraction, APIUser } from 'discord-api-types/v9';
 import type { UserCommandHandler, CommandResponse } from 'slshx';
 

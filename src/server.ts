@@ -1,7 +1,6 @@
 /**
  * @fileoverview 실제 서비스(디스코드 상호작용 엔트포인트 서버)에 사용될 퍼블릭 서버
  */
-import type { Request, ExecutionContext } from '@cloudflare/workers-types';
 import type { Options } from 'slshx';
 
 // Cloudflare Workers에서 라우터를 더 편하게 만들기 위한 모듈
