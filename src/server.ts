@@ -32,7 +32,7 @@ const options: Options = {
 Router.post('/interaction', async (request: any, workerSecret: {}, workerContext: ExecutionContext) => {
 	try {
 		return await createHandler(options)(request, workerSecret, workerContext);
-	} catch(error) {
+	} catch(error: any) {
 		return await onError(error);
 	}
 });
