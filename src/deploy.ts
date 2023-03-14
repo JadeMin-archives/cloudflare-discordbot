@@ -44,4 +44,4 @@ export default {
 	async fetch(request: Request, workerSecret: {}, workerContext: ExecutionContext) {
 		return Router.handle(request, workerSecret, workerContext);
 	}
-};
+} as const;

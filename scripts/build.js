@@ -4,8 +4,6 @@ import env from "../secrets.json" assert {type: 'json'};
 
 const argv = process.argv.slice(2)[0]; // node build.js 할 때 빌드 옵션을 인자로 지정함
 const isDeployMode = argv === 'deploy'; // 빌드 옵션이 deploy (명령어 배포)인지 여부
-
-
 const define = {
 	/**
 	 * miniflare와 배포용 옵션이 활성화되었을 때만 작동하는
@@ -23,6 +21,9 @@ const define = {
 	"env.PUBLIC_KEY": JSON.stringify(env["PUBLIC_KEY"]),
 	"env.SECRET_KEY": JSON.stringify(env["SECRET_KEY"])
 };
+
+
+
 await build({
 	entryPoints: [`./src/${isDeployMode? 'deploy':'server'}.ts`],
 	outfile: "./dist/server.mjs",
@@ -46,6 +47,7 @@ await build({
 
 	define
 });
+
 
 const serverType = isDeployMode?
 	"명령어 배포용 로컬서버"

@@ -1,4 +1,4 @@
-name = "cfworkers-discordbot"
+name = "cfworker-discordbot"
 main = "dist/server.mjs"
 compatibility_date = "2022-12-14"
 
@@ -8,7 +8,7 @@ minify = false
 
 
 [build]
-command = "node --no-warnings ./scripts/build.js publish"
+command = "npm run build:publish"
 
 
 [miniflare]

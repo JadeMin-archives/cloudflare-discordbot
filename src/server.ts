@@ -36,6 +36,9 @@ Router.post('/interaction', async (request: any, workerSecret: {}, workerContext
 		return await onError(error);
 	}
 });
+Router.all('*', () => {
+	return new Response("404 Not Found", {status: 404});
+});
 
 
 // Cloudflare Workers에서도 라우팅될 수 있게끔 라우터한테 패스하기
@@ -43,4 +46,4 @@ export default {
 	async fetch(request: Request, workerSecret: {}, workerContext: ExecutionContext) {
 		return Router.handle(request, workerSecret, workerContext);
 	}
-};
+} as const;

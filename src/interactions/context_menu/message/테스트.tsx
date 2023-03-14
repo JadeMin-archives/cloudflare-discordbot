@@ -1,5 +1,4 @@
-import type { APIInteraction, APIMessage } from 'discord-api-types/v9';
-import type { MessageCommandHandler, CommandResponse } from 'slshx';
+import type { MessageCommandHandler } from 'slshx';
 
 import {
 	createElement,
@@ -8,15 +7,13 @@ import {
 	useButton, useModal, useInput,
 } from 'slshx';
 
+
+
 export default {
 	"테스트 메시지메뉴": (): MessageCommandHandler => {
-		return (
-			interaction: APIInteraction,
-			workerSecret: {},
-			workerContext: ExecutionContext,
-			targetMessage: APIMessage
-		): CommandResponse => {
-			const messageUrl = `https://discord.com/channels/${interaction.guild_id ?? "@me"}/${targetMessage.channel_id}/${targetMessage.id}`;
+		return (interaction, workerSecret, workerContext, targetMessage) => {
+			const guildID = interaction.guild_id ?? "@me";
+			const messageUrl = `https://discord.com/channels/${guildID}/${targetMessage.channel_id}/${targetMessage.id}`;
 			
 			return (
 				<Message ephemeral>
@@ -25,4 +22,4 @@ export default {
 			);
 		};
 	}
-};
+} as const;

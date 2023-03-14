@@ -1,5 +1,4 @@
-import type { APIInteraction, APIUser } from 'discord-api-types/v9';
-import type { UserCommandHandler, CommandResponse } from 'slshx';
+import type { UserCommandHandler } from 'slshx';
 
 import {
 	createElement,
@@ -8,19 +7,19 @@ import {
 	useButton, useModal, useInput,
 } from 'slshx';
 
+
+
 export default {
 	"테스트 유저메뉴": (): UserCommandHandler => {
-		return (
-			interaction: APIInteraction,
-			workerSecret: {},
-			workerContext: ExecutionContext,
-			targetUser: APIUser
-		): CommandResponse => {
+		return (interaction, workerSecret, workerContext, targetUser) => {
+			const mentionInteractedUser = `<@${interaction.member!.user.id}>`;
+			const mentionTargetUser = `<@${targetUser.id}>`;
+
 			return (
 				<Message ephemeral>
-					{`<@${interaction.member.user.id}>님이 <@${targetUser.id}>님의 테스트 유저 메뉴를 눌렀습니다.`}
+					{`${mentionInteractedUser}님이 ${mentionTargetUser}님의 테스트 유저 메뉴를 눌렀습니다.`}
 				</Message>
 			);
 		};
 	}
-};
+} as const;

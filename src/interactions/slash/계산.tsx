@@ -1,5 +1,4 @@
-import type { APIInteraction } from 'discord-api-types/v9';
-import type { CommandHandler, CommandResponse } from 'slshx';
+import type { CommandHandler } from 'slshx';
 
 import {
 	createElement,
@@ -8,6 +7,8 @@ import {
 	Fragment, Message, Embed, Field, Modal, Button, Input, Row,
 	useButton, useModal, useInput,
 } from 'slshx';
+
+
 
 export default {
 	"계산": {
@@ -27,20 +28,18 @@ export default {
 			
 
 			// 슬래시 명령어 사용 시 반환할 컴포넌트
-			return (
-				interaction: APIInteraction,
-				workerSecret: {},
-				workerContext: ExecutionContext
-			): CommandResponse => (
-				<Message>
-					{
-						// 숫자 1과 숫자 2를 더합니다.
-						argv_n1 + argv_n2
-					}
-				</Message>
-			);
+			return (interaction, workerSecret, workerContext) => {
+				return (
+					<Message>
+						{
+							// 숫자 1과 숫자 2를 더합니다.
+							argv_n1 + argv_n2
+						}
+					</Message>
+				);
+			};
 		},
-		"빼기": () => {
+		"빼기": (): CommandHandler => {
 			// 명령어 설명
 			useDescription("두 숫자의 뺄셈 결과값을 구합니다.");
 
@@ -56,20 +55,18 @@ export default {
 			
 
 			// 슬래시 명령어 사용 시 반환할 컴포넌트
-			return (
-				interaction: APIInteraction,
-				workerSecret: {},
-				workerContext: ExecutionContext
-			): CommandResponse => (
-				<Message>
-					{
-						// 숫자 1과 숫자 2를 뺍니다.
-						argv_n1 - argv_n2
-					}
-				</Message>
-			);
+			return (interaction, workerSecret, workerContext) => {
+				return (
+					<Message>
+						{
+							// 숫자 1과 숫자 2를 뺍니다.
+							argv_n1 - argv_n2
+						}
+					</Message>
+				);
+			};
 		},
-		"곱하기": () => {
+		"곱하기": (): CommandHandler => {
 			// 명령어 설명
 			useDescription("두 숫자의 곱셈 결과값을 구합니다.");
 
@@ -85,20 +82,18 @@ export default {
 			
 
 			// 슬래시 명령어 사용 시 반환할 컴포넌트
-			return (
-				interaction: APIInteraction,
-				workerSecret: {},
-				workerContext: ExecutionContext
-			): CommandResponse => (
-				<Message>
-					{
-						// 숫자 1과 숫자 2를 곱합니다.
-						argv_n1 * argv_n2
-					}
-				</Message>
-			);
+			return (interaction, workerSecret, workerContext) => {
+				return (
+					<Message>
+						{
+							// 숫자 1과 숫자 2를 곱합니다.
+							argv_n1 * argv_n2
+						}
+					</Message>
+				);
+			};
 		},
-		"나누기": () => {
+		"나누기": (): CommandHandler => {
 			// 명령어 설명
 			useDescription("두 숫자의 나눗셈 결과값을 구합니다.");
 
@@ -114,18 +109,16 @@ export default {
 			
 
 			// 슬래시 명령어 사용 시 반환할 컴포넌트
-			return (
-				interaction: APIInteraction,
-				workerSecret: {},
-				workerContext: ExecutionContext
-			): CommandResponse => (
-				<Message>
-					{
-						// 숫자 1과 숫자 2를 나눕니다.
-						argv_n1 / argv_n2
-					}
-				</Message>
-			);
+			return (interaction, workerSecret, workerContext) => {
+				return (
+					<Message>
+						{
+							// 숫자 1과 숫자 2를 나눕니다.
+							argv_n1 / argv_n2
+						}
+					</Message>
+				);
+			};
 		}
 	}
-};
+} as const;
